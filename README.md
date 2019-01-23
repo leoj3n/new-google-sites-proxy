@@ -32,13 +32,13 @@ To see a more complex demo, try <https://localhost:3000/lexnetcrm.com/new-sites-
 
 For your own site URL, simply replace <https://sites.google.com> with <https://localhost:3000>.
 
-### Injecting Scripts
+### Injecting
 
 Edit `index.js` to inject scripts from the `public` folder. Restart the server.
 
 ## npm run
 
-Development:
+### Development
 
 ```console
 npm install
@@ -46,7 +46,7 @@ npm start
 npm run lint
 ```
 
-Everything:
+### Everything
 
 ```console
 Lifecycle scripts included in new-google-sites-proxy:
