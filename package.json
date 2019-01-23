@@ -1,0 +1,26 @@
+{
+  "name": "new-google-sites-proxy",
+  "description": "NodeJS proxy for the New Google Sites",
+  "license": "ISC",
+  "author": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npm run prettier-multi && npm run prettier-pkg",
+    "start": "node ${npm_package_main}",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier-multi": "prettier --single-quote --trailing-comma es5 --write '**/*.{js,json,md,less}'",
+    "prettier-pkg": "prettier-package-json --write package.json"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "http-proxy-middleware": "^0.19.1"
+  },
+  "devDependencies": {
+    "prettier": "github:prettier/prettier",
+    "prettier-package-json": "^2.0.1"
+  },
+  "engines": {
+    "node": ">= 10.14.1"
+  }
+}
