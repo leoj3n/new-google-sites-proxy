@@ -16,7 +16,7 @@ Once the install has finished, run the server:
 npm start
 ```
 
-Visit <http://localhost:3000/view/<yoursitename>> to see the proxy site.
+Visit <http://localhost:3000/view/[yoursitename]> to see the proxy site.
 
 ### Injecting Scripts
 
