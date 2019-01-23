@@ -6,6 +6,8 @@ NodeJS proxy for the [New Google Sites](https://sites.google.com/new).
 
 Edit `index.js` or update the symlinks in the `ssl` folder to point to your SSL key/cert files.
 
+If you haven't generated any local certs yet, use [`mkcert`](https://github.com/FiloSottile/mkcert).
+
 Next, in any terminal at the root of the repo, run:
 
 ```console
@@ -20,9 +22,9 @@ npm start
 
 Visit <http://localhost:3000/view/new-sites-demo> to see the proxy site.
 
-For a more complex site, visit <https://localhost:3000/lexnetcrm.com/new-sites-demo>.
+To see a more complex demo, try <https://localhost:3000/lexnetcrm.com/new-sites-demo>.
 
-For your own site, replace <https://sites.google.com> with <https://localhost:3000> in your URL.
+For your own site URL, simply replace <https://sites.google.com> with <https://localhost:3000>.
 
 ### Injecting Scripts
 
@@ -55,3 +57,7 @@ available via `npm run-script`:
   prettier-pkg
     prettier-package-json --write package.json
 ```
+
+## Deploy
+
+You will need to purchase a valid SSL certificate or use <https://letsencrypt.org/>.
