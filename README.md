@@ -4,7 +4,9 @@ NodeJS proxy for the [New Google Sites](https://sites.google.com/new).
 
 ## Quick Start
 
-In any terminal, at the root of the repo:
+Edit `index.js` or update the symlinks in the `ssl` folder to point to your SSL key/cert files.
+
+Next, in any terminal at the root of the repo, run:
 
 ```console
 npm install
@@ -16,7 +18,11 @@ Once the install has finished, run the server:
 npm start
 ```
 
-Visit <http://localhost:3000/view/[yoursitename]> to see the proxy site.
+Visit <http://localhost:3000/view/new-sites-demo> to see the proxy site.
+
+For a more complex site, visit <https://localhost:3000/lexnetcrm.com/new-sites-demo>.
+
+For your own site, replace <https://sites.google.com> with <https://localhost:3000> in your URL.
 
 ### Injecting Scripts
 

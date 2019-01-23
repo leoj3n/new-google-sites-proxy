@@ -21,7 +21,7 @@ const replace = function(body, req) {
     return body;
   } else {
     logger.debug('[GSP] Replace:', needle);
-    return body.replace(needle, ',"",');
+    return body.replace(needle, ',null,');
   }
 };
 
