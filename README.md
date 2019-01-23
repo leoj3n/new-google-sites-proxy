@@ -8,11 +8,11 @@ NodeJS proxy for the [New Google Sites](https://sites.google.com/new).
 
 If you haven't generated any local certificates yet, you can use [`mkcert`](https://github.com/FiloSottile/mkcert).
 
-Edit `index.js` or update the symlinks in the `ssl` folder to point to your local SSL key/cert files.
+Edit `index.js` or update the symlinks in the `ssl` folder to point to your local key/cert files.
 
 ### Installing
 
-Next, in any terminal at the root of the repo, run:
+Next, in a terminal at the root of the repo, run:
 
 ```console
 npm install
@@ -23,6 +23,8 @@ Once the install has finished, run the server:
 ```console
 npm start
 ```
+
+### Visiting
 
 Visit <http://localhost:3000/view/new-sites-demo> to see the proxy site.
 
