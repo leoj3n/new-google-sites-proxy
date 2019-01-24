@@ -34,7 +34,7 @@ For your own site URL, simply replace <https://sites.google.com> with <https://l
 
 ### Injecting
 
-Edit `styles` and `scripts` in `config/default.json` to control what is injected.
+Edit `inject.styles` and `inject.scripts` in `config/default.json` to control what is injected.
 
 ## npm run
 
