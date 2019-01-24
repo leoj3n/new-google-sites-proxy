@@ -2,6 +2,8 @@
 
 NodeJS proxy for the [New Google Sites](https://sites.google.com/new).
 
+Removes the `<footer>` by default.
+
 ## Quick Start
 
 ### Certificates
