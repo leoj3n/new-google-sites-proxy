@@ -70,6 +70,6 @@ You will need to purchase a valid SSL certificate or use <https://letsencrypt.or
 
 ### Heroku
 
-If you're using Heroku, SSL is automatically provided by their public host.
+If deploying to Heroku, SSL is automatically terminated by their public host.
 
-You will need to update `host` in `config/production.json`.
+All you need to do is update `host` in `config/production.json` to point to your instance.
