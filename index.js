@@ -7,7 +7,9 @@ const proxy = require('http-proxy-middleware');
 const logger = require('http-proxy-middleware/lib/logger').getInstance();
 
 const onListen = function() {
-  logger.info(`[GSP] Server: https://${config.get('host')}:${config.get('port')}`);
+  logger.info(
+    `[GSP] Server: https://${config.get('host')}:${config.get('port')}`
+  );
 };
 
 const noContent = function(req, res) {

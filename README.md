@@ -28,7 +28,7 @@ npm start
 
 ### Visiting
 
-Visit <https://localhost:3000/view/new-sites-demo> to see the proxy site.
+Visit <https://localhost:3000/view/new-sites-demo> to see a proxy site.
 
 To see a more complex demo, try <https://localhost:3000/lexnetcrm.com/new-sites-demo>.
 
