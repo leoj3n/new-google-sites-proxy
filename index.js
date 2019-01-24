@@ -95,5 +95,5 @@ https
     app
   )
   .listen(config.get('port'), () => {
-    logger.info(`[GSP] Server: https://localhost:${config.get('port')}`);
+    logger.info(`[GSP] Server: https://${config.get('host')}:${config.get('port')}`);
   });

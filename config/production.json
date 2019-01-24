@@ -1,5 +1,4 @@
 {
   "log": "info",
-  "port": "PORT",
   "host": "new-google-sites-proxy.herokuapp.com"
 }
