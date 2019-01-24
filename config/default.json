@@ -1,10 +1,10 @@
 {
   "key": null,
   "cert": null,
-  "public": "inject",
-  "target": "https://sites.google.com",
   "inject": {
     "styles": ["hide-footer.css"],
     "scripts": ["remove-footer.js"]
-  }
+  },
+  "public": "inject",
+  "target": "https://sites.google.com"
 }
