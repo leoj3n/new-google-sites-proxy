@@ -16,9 +16,23 @@ const replace = function(body, req) {
   return body.replace(needle, ',null,');
 };
 
-const inject = function(body, src) {
-  logger.debug('[GSP] Inject:', src);
-  return body.replace('</head>', `<script src="${src}"></script></head>`);
+const injectHead = function(body, src) {
+  const tag = '</head>';
+  return src.reduce((acc, cur) => {
+    logger.debug(`[GSP] Inject ${tag}:`, cur);
+    return acc.replace(
+      tag,
+      `<link rel="stylesheet" href="/styles/${cur}"/>${tag}`
+    );
+  }, body);
+};
+
+const injectBody = function(body, src) {
+  const tag = '</body>';
+  return src.reduce((acc, cur) => {
+    logger.debug(`[GSP] Inject ${tag}:`, cur);
+    return acc.replace(tag, `<script src="/scripts/${cur}"></script>${tag}`);
+  }, body);
 };
 
 const filter = function(pathname, req) {
@@ -39,7 +53,8 @@ const onProxyRes = function(proxyRes, req, res) {
 
     if (req.method === 'GET') {
       body = replace(body, req);
-      body = inject(body, '/remove-footer.js');
+      body = injectHead(body, config.get('inject.styles'));
+      body = injectBody(body, config.get('inject.scripts'));
     }
 
     res.set({

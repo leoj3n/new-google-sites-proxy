@@ -2,5 +2,9 @@
   "key": null,
   "cert": null,
   "public": "public",
-  "target": "https://sites.google.com"
+  "target": "https://sites.google.com",
+  "inject": {
+    "styles": ["hide-footer.css"],
+    "scripts": ["remove-footer.js"]
+  }
 }
