@@ -8,7 +8,7 @@ NodeJS proxy for the [New Google Sites](https://sites.google.com/new).
 
 If you haven't generated any local certificates yet, you can use [`mkcert`](https://github.com/FiloSottile/mkcert).
 
-Edit `index.js` or update the symlinks in the `ssl` folder to point to your local key/cert files.
+Edit `config/development.js` or update the symlinks in the `ssl` folder to point to your local key/cert files.
 
 ### Installing
 
@@ -67,3 +67,9 @@ available via `npm run-script`:
 ## Deploy
 
 You will need to purchase a valid SSL certificate or use <https://letsencrypt.org/>.
+
+### Heroku
+
+If you're using Heroku, SSL is automatically provided by their public host.
+
+You will need to update `host` in `config/production.json`.
