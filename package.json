@@ -15,7 +15,8 @@
   "dependencies": {
     "config": "^3.0.1",
     "express": "^4.16.4",
-    "http-proxy-middleware": "^0.19.1"
+    "http-proxy-middleware": "^0.19.1",
+    "is-heroku": "^2.0.0"
   },
   "devDependencies": {
     "prettier": "github:prettier/prettier",

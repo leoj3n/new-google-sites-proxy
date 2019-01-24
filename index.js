@@ -2,8 +2,13 @@ const zlib = require('zlib');
 const https = require('https');
 const config = require('config');
 const express = require('express');
+const isHeroku = require('is-heroku');
 const proxy = require('http-proxy-middleware');
 const logger = require('http-proxy-middleware/lib/logger').getInstance();
+
+const onListen = function() {
+  logger.info(`[GSP] Server: https://${config.get('host')}:${config.get('port')}`);
+};
 
 const noContent = function(req, res) {
   logger.debug('[GSP] No Content:', req.method, req.url);
@@ -86,14 +91,16 @@ app
   .use('/u/', noContent)
   .use('/', targetProxy);
 
-https
-  .createServer(
-    {
-      key: config.get('key'),
-      cert: config.get('cert'),
-    },
-    app
-  )
-  .listen(config.get('port'), () => {
-    logger.info(`[GSP] Server: https://${config.get('host')}:${config.get('port')}`);
-  });
+if (isHeroku) {
+  app.listen(config.get('port'), onListen);
+} else {
+  https
+    .createServer(
+      {
+        key: config.get('key'),
+        cert: config.get('cert'),
+      },
+      app
+    )
+    .listen(config.get('port'), onListen);
+}
