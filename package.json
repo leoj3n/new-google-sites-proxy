@@ -13,6 +13,7 @@
     "prettier-pkg": "prettier-package-json --write package.json"
   },
   "dependencies": {
+    "config": "^3.0.1",
     "express": "^4.16.4",
     "http-proxy-middleware": "^0.19.1"
   },

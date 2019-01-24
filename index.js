@@ -1,28 +1,19 @@
-const fs = require('fs');
-const path = require('path');
 const zlib = require('zlib');
 const https = require('https');
+const config = require('config');
 const express = require('express');
 const proxy = require('http-proxy-middleware');
 const logger = require('http-proxy-middleware/lib/logger').getInstance();
 
-const config = {
-  port: 3000,
-  logLevel: 'debug',
-  domain: 'https://sites.google.com',
-  cert: fs.readFileSync(path.resolve('./ssl/cert.pem')),
-  key: fs.readFileSync(path.resolve('./ssl/key.pem')),
+const noContent = function(req, res) {
+  logger.debug('[GSP] No Content:', req.method, req.url);
+  res.sendStatus(204);
 };
 
 const replace = function(body, req) {
-  const needle = `,"${config.domain}${req.url}",`;
-
-  if (req.method === 'POST') {
-    return body;
-  } else {
-    logger.debug('[GSP] Replace:', needle);
-    return body.replace(needle, ',null,');
-  }
+  const needle = `,"${config.get('target')}${req.url}",`;
+  logger.debug('[GSP] Replace:', needle);
+  return body.replace(needle, ',null,');
 };
 
 const inject = function(body, src) {
@@ -46,8 +37,10 @@ const onProxyRes = function(proxyRes, req, res) {
   proxyRes.on('end', () => {
     let body = zlib.gunzipSync(buffer).toString('utf8');
 
-    body = replace(body, req);
-    body = inject(body, '/remove-footer.js');
+    if (req.method === 'GET') {
+      body = replace(body, req);
+      body = inject(body, '/remove-footer.js');
+    }
 
     res.set({
       'content-encoding': 'gzip',
@@ -63,26 +56,29 @@ const onProxyRes = function(proxyRes, req, res) {
   delete proxyRes.headers['content-security-policy'];
 };
 
-var domainProxy = proxy(filter, {
+var targetProxy = proxy(filter, {
   changeOrigin: true,
-  target: config.domain,
   onProxyRes: onProxyRes,
   selfHandleResponse: true,
-  logLevel: config.logLevel,
+  target: config.get('target'),
+  logLevel: config.get('log'),
 });
 
 const app = express();
-app.use(express.static('public'));
-app.use('/', domainProxy);
+
+app
+  .use(express.static(config.get('public')))
+  .use('/u/', noContent)
+  .use('/', targetProxy);
 
 https
   .createServer(
     {
-      key: config.key,
-      cert: config.cert,
+      key: config.get('key'),
+      cert: config.get('cert'),
     },
     app
   )
-  .listen(config.port, () => {
-    logger.info(`[GSP] Server: https://localhost:${config.port}`);
+  .listen(config.get('port'), () => {
+    logger.info(`[GSP] Server: https://localhost:${config.get('port')}`);
   });
