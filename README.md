@@ -14,7 +14,7 @@ Edit `config/development.js` or update the symlinks in the `ssl` folder to point
 
 ### Installing
 
-Next, in a terminal at the root of the repo, run:
+In a terminal at the root of the repo, run:
 
 ```console
 npm install
@@ -30,9 +30,9 @@ npm start
 
 Visit <https://localhost:3000/view/new-sites-demo> to see a proxy site.
 
-To see a more complex demo, try <https://localhost:3000/lexnetcrm.com/new-sites-demo>.
+For a more complex demo, try <https://localhost:3000/lexnetcrm.com/new-sites-demo>.
 
-For your own site URL, simply replace <https://sites.google.com> with <https://localhost:3000>.
+To see your own site, simply replace <https://sites.google.com> with <https://localhost:3000>.
 
 ### Injecting
 
@@ -72,6 +72,6 @@ You will need to purchase a valid SSL certificate or use <https://letsencrypt.or
 
 ### Heroku
 
-If deploying to Heroku, SSL is automatically terminated by their public host.
+If deploying to Heroku, SSL is automatically terminated at their public host.
 
 All you need to do is update `host` in `config/production.json` to point to your instance.
